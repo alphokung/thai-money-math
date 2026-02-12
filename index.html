@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thai Money Math - เกมรวมเงินให้ครบ 💰</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Thai Money Math - เกมรวมเงินให้ครบ 💰">
+    <meta property="og:description" content="เกมฝึกทักษะการคำนวณเงินไทยสำหรับเด็ก สนุกและได้ความรู้">
+    <meta property="og:image" content="assets/og.webp">
+    <meta property="og:url" content="https://thai-money-math.pages.dev/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body>
+    <div class="game-wrapper">
+        <main class="main-content">
+            <header>
+                <h1>เกมรวมเงินให้ครบ 💰</h1>
+            </header>
+
+            <section class="target-section">
+                <div class="info-row">
+                    <div class="target-display">
+                        <h2>เป้าหมาย: <span id="target-amount">0</span> บาท <button id="edit-target-btn"
+                                class="edit-btn" title="แก้ไขยอดเงิน" aria-label="แก้ไขยอดเงินเป้าหมาย">✏️</button></h2>
+                    </div>
+                    <div class="current-display">
+                        <h3>รวมได้แล้ว: <span id="current-amount">0</span> บาท</h3>
+                    </div>
+                </div>
+                <button id="reset-btn" class="reset-btn">เริ่มใหม่</button>
+            </section>
+
+            <section class="wallet-section" id="wallet-zone">
+                <p class="placeholder-text">ลากเงินมาวางที่นี่ หรือคลิกที่เงินด้านขวา</p>
+                <!-- Dropped items will appear here -->
+            </section>
+        </main>
+
+        <aside class="sidebar">
+            <section class="money-bank">
+                <h3>เลือกเงินที่นี่ 👇</h3>
+                <div class="money-grid">
+                    <!-- Coins -->
+                    <button class="money-item coin" data-value="1" onclick="addToWallet(1)">
+                        <img src="assets/coin_1.png" alt="เหรียญ 1 บาท">
+                        <span>1</span>
+                    </button>
+                    <button class="money-item coin" data-value="2" onclick="addToWallet(2)">
+                        <img src="assets/coin_2.png" alt="เหรียญ 2 บาท">
+                        <span>2</span>
+                    </button>
+                    <button class="money-item coin" data-value="5" onclick="addToWallet(5)">
+                        <img src="assets/coin_5.png" alt="เหรียญ 5 บาท">
+                        <span>5</span>
+                    </button>
+                    <button class="money-item coin" data-value="10" onclick="addToWallet(10)">
+                        <img src="assets/coin_10.png" alt="เหรียญ 10 บาท">
+                        <span>10</span>
+                    </button>
+
+                    <!-- Banknotes -->
+                    <button class="money-item note" data-value="20" onclick="addToWallet(20)">
+                        <img src="assets/note_20.png" alt="ธนบัตร 20 บาท">
+                        <span>20</span>
+                    </button>
+                    <button class="money-item note" data-value="50" onclick="addToWallet(50)">
+                        <img src="assets/note_50.png" alt="ธนบัตร 50 บาท">
+                        <span>50</span>
+                    </button>
+                    <button class="money-item note" data-value="100" onclick="addToWallet(100)">
+                        <img src="assets/note_100.png" alt="ธนบัตร 100 บาท">
+                        <span>100</span>
+                    </button>
+                    <button class="money-item note" data-value="500" onclick="addToWallet(500)">
+                        <img src="assets/note_500.png" alt="ธนบัตร 500 บาท">
+                        <span>500</span>
+                    </button>
+                    <button class="money-item note" data-value="1000" onclick="addToWallet(1000)">
+                        <img src="assets/note_1000.png" alt="ธนบัตร 1000 บาท">
+                        <span>1000</span>
+                    </button>
+                </div>
+            </section>
+        </aside>
+    </div>
+
+    <!-- Celebration Overlay -->
+    <div id="celebration-overlay" class="hidden">
+        <div class="celebration-content">
+            <h2>🎉 เก่งมาก! 🎉</h2>
+            <p>รวมเงินได้ครบแล้ว</p>
+            <button onclick="startNewGame()">เล่นอีกครั้ง</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

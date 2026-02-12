@@ -1,0 +1,414 @@
+:root {
+    --bg-color: #f0f8ff;
+    /* AliceBlue */
+    --primary-color: #ff6f61;
+    /* Coral */
+    --secondary-color: #4db6ac;
+    /* Teal */
+    --accent-color: #fdd835;
+    /* Yellow */
+    --text-color: #333;
+    --font-family: 'Kanit', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    background-image: radial-gradient(#e0f7fa 10%, transparent 10%);
+    background-size: 30px 30px;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    /* Prevent scrolling on main body */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Main Layout Wrapper */
+.game-wrapper {
+    background: white;
+    width: 95%;
+    height: 95%;
+    max-width: 1200px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: grid;
+    /* Landscape Default: 2 Columns */
+    grid-template-columns: 1fr 300px;
+    overflow: hidden;
+}
+
+/* Left Panel: Game Area */
+.main-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto;
+}
+
+header h1 {
+    text-align: center;
+    color: var(--secondary-color);
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+/* Target & Current Display - Side by Side in Landscape */
+.target-section {
+    background: #fff3e0;
+    padding: 15px;
+    border-radius: 15px;
+    border: 3px dashed #ffb74d;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.target-display h2,
+.current-display h3 {
+    margin: 0;
+    text-align: center;
+}
+
+.target-display h2 {
+    color: #e65100;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.edit-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    opacity: 0.6;
+    transition: opacity 0.2s, transform 0.2s;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.edit-btn:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.05);
+    transform: scale(1.1);
+}
+
+.current-display h3 {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+}
+
+.reset-btn {
+    padding: 8px 25px;
+    font-size: 1rem;
+    align-self: center;
+}
+
+/* Wallet Zone - Flexible Growth */
+.wallet-section {
+    background: #e1f5fe;
+    border-radius: 15px;
+    border: 3px solid #81d4fa;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 10px;
+    flex-grow: 1;
+    /* Retain height fill */
+    overflow-y: auto;
+    transition: background-color 0.3s;
+    min-height: 150px;
+}
+
+.wallet-section.correct {
+    background-color: #e8f5e9;
+    border-color: #66bb6a;
+}
+
+.wallet-section.wrong {
+    animation: shake 0.5s;
+}
+
+.placeholder-text {
+    width: 100%;
+    text-align: center;
+    color: #78909c;
+    font-style: italic;
+    pointer-events: none;
+    margin-top: 20px;
+}
+
+/* Right Sidebar: Money Bank */
+.sidebar {
+    background: #fce4ec;
+    border-left: 2px solid #f8bbd0;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.money-bank h3 {
+    text-align: center;
+    color: #c2185b;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.money-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 columns in sidebar */
+    gap: 15px;
+    justify-items: center;
+}
+
+/* Money Items */
+.money-item {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+/* Money Groups */
+.money-group {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.money-group .money-item {
+    margin: 0;
+    transition: transform 0.2s;
+}
+
+.money-group .money-item:not(:first-child) {
+    margin-left: -10px;
+    /* Slight overlap for compactness */
+}
+
+.money-group .money-item:hover {
+    z-index: 10;
+    transform: scale(1.1) translateY(-5px);
+}
+
+.money-item:active {
+    transform: scale(0.9);
+}
+
+.money-item:hover {
+    transform: scale(1.05);
+}
+
+.money-item img {
+    width: 85px;
+    height: auto;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.2));
+}
+
+.money-item.note img {
+    width: 120px;
+}
+
+.money-item span {
+    font-weight: 500;
+    color: var(--text-color);
+    margin-top: 5px;
+    font-size: 0.9rem;
+}
+
+/* Placed Money */
+.placed-money img {
+    width: 70px;
+}
+
+.placed-money.note img {
+    width: 100px;
+}
+
+/* Animations */
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes pop {
+    0% {
+        scale: 0;
+    }
+
+    80% {
+        scale: 1.1;
+    }
+
+    100% {
+        scale: 1;
+    }
+}
+
+.placed-money {
+    animation: pop 0.3s ease-out;
+}
+
+/* Overlay */
+#celebration-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.celebration-content {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    animation: pop 0.5s;
+}
+
+.celebration-content h2 {
+    color: #43a047;
+    font-size: 3em;
+    margin: 0;
+}
+
+.celebration-content button,
+.reset-btn {
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: var(--font-family);
+    transition: background 0.3s;
+}
+
+.celebration-content button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+.celebration-content button:hover,
+.reset-btn:hover {
+    background: #26a69a;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ------ Mobile / Portrait Adjustments ------ */
+@media (max-width: 768px) or (orientation: portrait) {
+    .game-wrapper {
+        grid-template-columns: 1fr;
+        /* Single column */
+        grid-template-rows: 1fr auto;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+
+    .sidebar {
+        border-left: none;
+        border-top: 2px solid #f8bbd0;
+        padding: 10px;
+        height: auto;
+        max-height: 35vh;
+        /* Limit height in portrait */
+        flex-direction: row;
+        /* Horizontal scroll if needed?? actually grid is better */
+    }
+
+    .money-bank h3 {
+        display: none;
+        /* Hide header to save space on mobile? or keep small */
+    }
+
+    .money-grid {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        gap: 15px;
+        padding-bottom: 10px;
+        width: 100%;
+        align-items: center;
+        /* Center items vertically if needed */
+    }
+
+    .money-item {
+        flex: 0 0 auto;
+        /* Prevent shrinking */
+    }
+
+    .money-item img {
+        width: 70px;
+        /* Increased from 50px */
+    }
+
+    .money-item.note img {
+        width: 100px;
+        /* Increased from 80px */
+    }
+
+    .wallet-section {
+        min-height: 150px;
+        /* Give it a bit more minimum space */
+    }
+}
