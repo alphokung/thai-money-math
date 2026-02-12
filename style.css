@@ -13,6 +13,8 @@
 
 * {
     box-sizing: border-box;
+    touch-action: manipulation;
+    /* Disable double-tap zoom universally */
 }
 
 body {
