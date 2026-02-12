@@ -25,6 +25,8 @@ body {
     background-image: radial-gradient(#e0f7fa 10%, transparent 10%);
     background-size: 30px 30px;
     height: 100vh;
+    height: 100dvh;
+    /* iOS Safari fix */
     width: 100vw;
     overflow: hidden;
     /* Prevent scrolling on main body */
@@ -38,6 +40,7 @@ body {
     background: white;
     width: 95%;
     height: 95%;
+    max-height: 95dvh;
     max-width: 1200px;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -371,6 +374,7 @@ header h1 {
         padding: 10px;
         height: auto;
         max-height: 35vh;
+        max-height: 35dvh;
         /* Limit height in portrait */
         flex-direction: row;
         /* Horizontal scroll if needed?? actually grid is better */

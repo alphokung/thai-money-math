@@ -82,9 +82,8 @@ function playNote(freq, time, duration) {
 }
 
 function initGame() {
-    // Generate random target between 10 and 100
-    // Simplified for younger kids as requested
-    targetAmount = Math.floor(Math.random() * 91) + 10;
+    // Generate random target between 10 and 40
+    targetAmount = Math.floor(Math.random() * 31) + 10;
     updateDisplay();
     resetWallet();
     celebrationOverlay.classList.add('hidden');
