@@ -14,6 +14,12 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <link rel="manifest" href="favicon/site.webmanifest">
 
+    <meta name="description"
+        content="เกมรวมเงินให้ครบ - ฝึกทักษะคณิตศาสตร์และการคิดเลขสำหรับเด็ก ด้วยการเล่นกับเหรียญและธนบัตรไทย">
+    <meta name="keywords" content="เกมคณิตศาสตร์, เกมรวมเงิน, สื่อการสอน, คณิตศาสตร์เด็ก, เงินไทย">
+    <meta name="author" content="Thai Money Math">
+    <meta name="theme-color" content="#4db6ac">
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Thai Money Math - เกมรวมเงินให้ครบ 💰">
     <meta property="og:description" content="เกมฝึกทักษะการคำนวณเงินไทยสำหรับเด็ก สนุกและได้ความรู้">
@@ -40,7 +46,7 @@
                         <h3>รวมได้แล้ว: <span id="current-amount">0</span> บาท</h3>
                     </div>
                 </div>
-                <button id="reset-btn" class="reset-btn">เริ่มใหม่</button>
+                <button id="reset-btn" class="reset-btn" aria-label="เริ่มเกมใหม่">เริ่มใหม่</button>
             </section>
 
             <section class="wallet-section" id="wallet-zone">
@@ -54,42 +60,48 @@
                 <h3>เลือกเงินที่นี่ 👇</h3>
                 <div class="money-grid">
                     <!-- Coins -->
-                    <button class="money-item coin" data-value="1" onclick="addToWallet(1)">
-                        <img src="assets/coin_1.png" alt="เหรียญ 1 บาท">
+                    <button class="money-item coin" data-value="1" onclick="addToWallet(1)" aria-label="เหรียญ 1 บาท">
+                        <img src="assets/coin_1.png" alt="เหรียญ 1 บาท" width="85" height="85">
                         <span>1</span>
                     </button>
-                    <button class="money-item coin" data-value="2" onclick="addToWallet(2)">
-                        <img src="assets/coin_2.png" alt="เหรียญ 2 บาท">
+                    <button class="money-item coin" data-value="2" onclick="addToWallet(2)" aria-label="เหรียญ 2 บาท">
+                        <img src="assets/coin_2.png" alt="เหรียญ 2 บาท" width="85" height="85">
                         <span>2</span>
                     </button>
-                    <button class="money-item coin" data-value="5" onclick="addToWallet(5)">
-                        <img src="assets/coin_5.png" alt="เหรียญ 5 บาท">
+                    <button class="money-item coin" data-value="5" onclick="addToWallet(5)" aria-label="เหรียญ 5 บาท">
+                        <img src="assets/coin_5.png" alt="เหรียญ 5 บาท" width="85" height="85">
                         <span>5</span>
                     </button>
-                    <button class="money-item coin" data-value="10" onclick="addToWallet(10)">
-                        <img src="assets/coin_10.png" alt="เหรียญ 10 บาท">
+                    <button class="money-item coin" data-value="10" onclick="addToWallet(10)"
+                        aria-label="เหรียญ 10 บาท">
+                        <img src="assets/coin_10.png" alt="เหรียญ 10 บาท" width="85" height="85">
                         <span>10</span>
                     </button>
 
                     <!-- Banknotes -->
-                    <button class="money-item note" data-value="20" onclick="addToWallet(20)">
-                        <img src="assets/note_20.png" alt="ธนบัตร 20 บาท">
+                    <button class="money-item note" data-value="20" onclick="addToWallet(20)"
+                        aria-label="ธนบัตร 20 บาท">
+                        <img src="assets/note_20.png" alt="ธนบัตร 20 บาท" width="120" height="60">
                         <span>20</span>
                     </button>
-                    <button class="money-item note" data-value="50" onclick="addToWallet(50)">
-                        <img src="assets/note_50.png" alt="ธนบัตร 50 บาท">
+                    <button class="money-item note" data-value="50" onclick="addToWallet(50)"
+                        aria-label="ธนบัตร 50 บาท">
+                        <img src="assets/note_50.png" alt="ธนบัตร 50 บาท" width="120" height="60">
                         <span>50</span>
                     </button>
-                    <button class="money-item note" data-value="100" onclick="addToWallet(100)">
-                        <img src="assets/note_100.png" alt="ธนบัตร 100 บาท">
+                    <button class="money-item note" data-value="100" onclick="addToWallet(100)"
+                        aria-label="ธนบัตร 100 บาท">
+                        <img src="assets/note_100.png" alt="ธนบัตร 100 บาท" width="120" height="60">
                         <span>100</span>
                     </button>
-                    <button class="money-item note" data-value="500" onclick="addToWallet(500)">
-                        <img src="assets/note_500.png" alt="ธนบัตร 500 บาท">
+                    <button class="money-item note" data-value="500" onclick="addToWallet(500)"
+                        aria-label="ธนบัตร 500 บาท">
+                        <img src="assets/note_500.png" alt="ธนบัตร 500 บาท" width="120" height="60">
                         <span>500</span>
                     </button>
-                    <button class="money-item note" data-value="1000" onclick="addToWallet(1000)">
-                        <img src="assets/note_1000.png" alt="ธนบัตร 1000 บาท">
+                    <button class="money-item note" data-value="1000" onclick="addToWallet(1000)"
+                        aria-label="ธนบัตร 1000 บาท">
+                        <img src="assets/note_1000.png" alt="ธนบัตร 1000 บาท" width="120" height="60">
                         <span>1000</span>
                     </button>
                 </div>
